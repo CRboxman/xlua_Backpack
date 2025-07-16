@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+        "type": "emmylua_attach",
+        "request": "attach",
+        "name": "lua附加unity调试",
+        "pid": 0,
+        "processName": ""
+        },
+        {
+            "name": "Unity Editor",
+            "type": "unity",
+            "path": "/f:/unity_de/Xiangmu/xlua_Backpack/Library/EditorInstance.json",
+            "request": "launch"
+        },
+        {
+            "name": "Windows Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "OSX Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "Linux Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "iOS Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "Android Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "Xbox One Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "PS4 Player",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "SwitchPlayer",
+            "type": "unity",
+            "request": "launch"
+        },
+        {
+            "name": "Attach to Unity",
+            "type": "vstuc",
+            "request": "attach"
+        }
+    ]
+}
