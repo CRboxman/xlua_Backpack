@@ -23,6 +23,9 @@ Text = UI.Text
 Button = UI.Button
 Toggle = UI.Toggle
 ScrollRect = UI.ScrollRect
+
+--Canvas对于我们这个项目来说是一次就可以了
+Canvas = GameObject.Find("Canvas").transform
 --自己写的C#脚本相关
 --直接得到AB包资源管理器的单例对象
 ABMgr = CS.ABTest.Instance

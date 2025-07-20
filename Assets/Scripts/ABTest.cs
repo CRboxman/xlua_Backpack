@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ABTest 
 {
-    public string mainBundleName = "PC"; // Ö÷°üµÄÃû×Ö
+    public string mainBundleName = "PC"; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
     private static ABTest instance = new ABTest();
@@ -26,49 +26,49 @@ public class ABTest
         get { return Application.streamingAssetsPath + "/";  }
     }
     /// <summary>
-    /// Ö±½Ó¶ÁÈ¡£¬¿ÉÄÜµ¼ÖÂÍ¬ÃûÎÊÌâ
+    /// Ö±ï¿½Ó¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="ABbao"></param>
     /// <param name="WenJian"></param>
     /// <returns></returns>
     public Object LoadRes(string ABbao,string WenJian)
     {
-        //°üÎª¿Õ²ÅÌí¼Ó       Ö÷°ü
+        //ï¿½ï¿½Îªï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½       ï¿½ï¿½ï¿½ï¿½
         if (bundle == null)
         {
             bundle = AssetBundle.LoadFromFile(StrPath + mainBundleName);
             if (bundle == null)
             {
-                Debug.Log("Ö÷°üÎ´ÕÒµ½£¬Çë¼ì²éÃû³Æ»òÕßÐÞ¸ÄmainBundleName");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½mainBundleName");
                 return null;
             }
         }
-        //¼ÓÔØÕâ¸öÖ÷°üµÄ      ¹Ì¶¨ÎÄ¼þ£¬ÓÃÓÚÏÂÃæ»ñÈ¡ÒÀÀµ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½      ï¿½Ì¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
         manifest = bundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
         string[] str = manifest.GetAllDependencies(ABbao);
         AssetBundle ab = null;
         for (int i = 0; i < str.Length; i++)
         {
-            //¼ì²éÊÇ·ñ¼ÓÔØÁËÏà¹Ø     ÒÀÀµ°ü     £¬Ã»ÓÐÔòÌí¼Óµ½Õâ¸ö×Öµä£¬·ÀÖ¹ÖØ¸´
+            //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Öµä£¬ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½
             if (!ABDic.ContainsKey(str[i]))
             {
                 ab = AssetBundle.LoadFromFile(StrPath + str[i]);
                 if (ab == null)
                 {
-                    Debug.Log("ÒÀÀµ°ü¼ÓÔØÊ§°Ü£º" + str[i] + "\n" + "\tÎ´ÕÒµ½Ïà¹ØÒÀÀµ°ü£¬Çë¼ì²éab°ü/Ö÷°üµÄ°üÃûÊÇ·ñÕýÈ·");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + str[i] + "\n" + "\tÎ´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½abï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
                     continue;
                 }
                 ABDic.Add(str[i], ab);
             }
         }
-        //¼ì²âÊÇ·ñ¼ÓÔØÁËÖ÷°ü
+        //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (!ABDic.ContainsKey(ABbao))
         {
             ab = AssetBundle.LoadFromFile(StrPath + ABbao);
             if (ab == null)
             {
-                Debug.Log("Ö÷×ÊÔ´°ü¼ÓÔØÊ§°Ü£º" + ABbao + "\n" + "\tÇë¼ì²éab°ü/Ö÷°üµÄ°üÃûÊÇ·ñÕýÈ·");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + ABbao + "\n" + "\tï¿½ï¿½ï¿½ï¿½abï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
                 return null;
             }
             ABDic.Add(ABbao, ab);
@@ -76,7 +76,7 @@ public class ABTest
         return ABDic[ABbao].LoadAsset(WenJian);
     }
     /// <summary>
-    /// Ö¸¶¨Ò»¸öÀàÐÍ£¬²¢×ª»»£¬Ò»¶¨³Ì¶È¼õÉÙÁËÍ¬ÃûÎÊÌâ
+    /// Ö¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ì¶È¼ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="ABbao"></param>
     /// <param name="WenJian"></param>
@@ -84,41 +84,41 @@ public class ABTest
     /// <returns></returns>
     public Object LoadRes(string ABbao, string WenJian,System.Type type)
     {
-        //°üÎª¿Õ²ÅÌí¼Ó       Ö÷°ü
+        //ï¿½ï¿½Îªï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½       ï¿½ï¿½ï¿½ï¿½
         if (bundle == null)
         {
             bundle = AssetBundle.LoadFromFile(StrPath + mainBundleName);
             if (bundle == null)
             {
-                Debug.Log("Ö÷°üÎ´ÕÒµ½£¬Çë¼ì²éÃû³Æ»òÕßÐÞ¸ÄmainBundleName");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½mainBundleName");
                 return null;
             }
         }
-        //¼ÓÔØÕâ¸öÖ÷°üµÄ      ¹Ì¶¨ÎÄ¼þ£¬ÓÃÓÚÏÂÃæ»ñÈ¡ÒÀÀµ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½      ï¿½Ì¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
         manifest = bundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         string[] str = manifest.GetAllDependencies(ABbao);
         AssetBundle ab = null;
         for (int i = 0; i < str.Length; i++)
         {
-            //¼ì²éÊÇ·ñ¼ÓÔØÁËÏà¹Ø     ÒÀÀµ°ü     £¬Ã»ÓÐÔòÌí¼Óµ½Õâ¸ö×Öµä£¬·ÀÖ¹ÖØ¸´
+            //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Öµä£¬ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½
             if (!ABDic.ContainsKey(str[i]))
             {
                 ab = AssetBundle.LoadFromFile(StrPath + str[i]);
                 if (ab == null)
                 {
-                    Debug.Log("ÒÀÀµ°ü¼ÓÔØÊ§°Ü£º" + str[i] + "\n" + "\tÎ´ÕÒµ½Ïà¹ØÒÀÀµ°ü£¬Çë¼ì²éab°ü/Ö÷°üµÄ°üÃûÊÇ·ñÕýÈ·");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + str[i] + "\n" + "\tÎ´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½abï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
                     continue;
                 }
                 ABDic.Add(str[i], ab);
             }
         }
-        //¼ì²âÊÇ·ñ¼ÓÔØÁËÖ÷°ü
+        //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (!ABDic.ContainsKey(ABbao))
         {
             ab = AssetBundle.LoadFromFile(StrPath + ABbao);
             if (ab == null)
             {
-                Debug.Log("Ö÷×ÊÔ´°ü¼ÓÔØÊ§°Ü£º" + ABbao + "\n" + "\tÇë¼ì²éab°ü/Ö÷°üµÄ°üÃûÊÇ·ñÕýÈ·");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + ABbao + "\n" + "\tï¿½ï¿½ï¿½ï¿½abï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
                 return null;
             }
             ABDic.Add(ABbao, ab);
@@ -126,7 +126,7 @@ public class ABTest
         return ABDic[ABbao].LoadAsset(WenJian,type);
     }
     /// <summary>
-    /// ³£ÓÃ·ºÐÍ·½Ê½
+    /// ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Í·ï¿½Ê½
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="ABbao"></param>
@@ -134,41 +134,41 @@ public class ABTest
     /// <returns></returns>
     public T LoadRes<T>(string ABbao, string WenJian) where T : Object 
     {
-        //°üÎª¿Õ²ÅÌí¼Ó       Ö÷°ü
+        //ï¿½ï¿½Îªï¿½Õ²ï¿½ï¿½ï¿½ï¿½ï¿½       ï¿½ï¿½ï¿½ï¿½
         if (bundle == null)
         {
             bundle = AssetBundle.LoadFromFile(StrPath + mainBundleName);
             if (bundle == null)
             {
-                Debug.Log("Ö÷°üÎ´ÕÒµ½£¬Çë¼ì²éÃû³Æ»òÕßÐÞ¸ÄmainBundleName");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½mainBundleName");
                 return null;
             }
         }
-        //¼ÓÔØÕâ¸öÖ÷°üµÄ      ¹Ì¶¨ÎÄ¼þ£¬ÓÃÓÚÏÂÃæ»ñÈ¡ÒÀÀµ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½      ï¿½Ì¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
         manifest = bundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         string[] str = manifest.GetAllDependencies(ABbao);
         AssetBundle ab = null;
         for (int i = 0; i < str.Length; i++)
         {
-            //¼ì²éÊÇ·ñ¼ÓÔØÁËÏà¹Ø     ÒÀÀµ°ü     £¬Ã»ÓÐÔòÌí¼Óµ½Õâ¸ö×Öµä£¬·ÀÖ¹ÖØ¸´
+            //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½     ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Öµä£¬ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½
             if (!ABDic.ContainsKey(str[i]))
             {
                 ab = AssetBundle.LoadFromFile(StrPath + str[i]);
                 if (ab == null)
                 {
-                    Debug.Log("ÒÀÀµ°ü¼ÓÔØÊ§°Ü£º" + str[i]+"\n"+ "\tÎ´ÕÒµ½Ïà¹ØÒÀÀµ°ü£¬Çë¼ì²éab°ü/Ö÷°üµÄ°üÃûÊÇ·ñÕýÈ·");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + str[i]+"\n"+ "\tÎ´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½abï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
                     continue;
                 }
                 ABDic.Add(str[i], ab);
             }
         }
-        //¼ì²âÊÇ·ñ¼ÓÔØÁËÖ÷ab°ü
+        //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½abï¿½ï¿½
         if (!ABDic.ContainsKey(ABbao))
         {
             ab = AssetBundle.LoadFromFile(StrPath + ABbao);
             if (ab == null)
             {
-                Debug.Log("Ö÷×ÊÔ´°ü¼ÓÔØÊ§°Ü£º" + ABbao+ "\n"+"\tÇë¼ì²éab°ü/Ö÷°üµÄ°üÃûÊÇ·ñÕýÈ·");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + ABbao+ "\n"+"\tï¿½ï¿½ï¿½ï¿½abï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
                 return null;
             }
             ABDic.Add(ABbao, ab);
@@ -176,7 +176,7 @@ public class ABTest
         T asset = ABDic[ABbao].LoadAsset<T>(WenJian);
         if (asset == null)
         {
-            Debug.Log("×ÊÔ´²»´æÔÚ£º" + WenJian+"\n"+"\tÇë¼ì²é×ÊÔ´Ãû³ÆÊÇ·ñÕýÈ·");
+            Debug.Log("ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½" + WenJian+"\n"+"\tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·");
         }
 
         return asset;
